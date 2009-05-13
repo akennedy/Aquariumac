@@ -1,0 +1,21 @@
+.main
+  %h3= link_to "Signup"
+  .clearfix
+    %p== Already have an account? #{link_to "Log in", login_path}.
+
+    - form_for @user do |f|
+      = f.error_messages
+      %p
+        = f.label :username
+        = f.text_field :username
+      %p
+        = f.label :email, "Email Address"
+        = f.text_field :email
+      %p
+        = f.label :password
+        = f.password_field :password
+      %p
+        = f.label :password_confirmation, "Confirm Password"
+        = f.password_field :password_confirmation
+      %p
+        = f.submit "Sign up"

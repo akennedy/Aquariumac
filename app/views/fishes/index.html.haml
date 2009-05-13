@@ -1,0 +1,8 @@
+- title "Fish Database"
+.main
+  %h3= link_to "#{params[:view] == 'Freshwater' ? "Freshwater" : "Saltwater" } Fish", "#"
+  .clearfix
+    - form_tag fishes_path, :method => 'get' do 
+      = text_field_tag :q, params[:q], :class => "title"
+      = submit_tag "Search", :class => "button"
+    = render :partial => "fishes", :object => @fishes

@@ -1,0 +1,61 @@
+- title "Fish Species Database and Aquarium Managemant Tool"
+.span-24
+  .span-6
+    - if current_user
+      .main
+        %h3= link_to "Something Here"
+        .clearfix 
+    - else      
+      .main
+        %h3= link_to "Login"
+        .clearfix
+          %p 
+            Don't have an account?
+            = link_to "Sign Up", signup_path, :class => "button ui-corner-all"
+          - form_tag sessions_path do
+            %p
+              = label_tag :login, "Username or Email Address"
+              = text_field_tag :login, params[:login]
+            %p
+              = label_tag :password
+              = password_field_tag :password
+            %p
+              = submit_tag "Log in"
+  .span-18{:class => "last"}
+    .main
+      %h3{:class => "ui-state-active"}= link_to "Welcome to AquariuMac"
+      .clearfix
+        %p AquariuMac is an aquarium hobbyist online source for all things aquarium.  We will be adding a species database including fish, inverts, corals and plants for both saltwater and freshwater.  In the future it will also become an online aquarium management tool include all typical log needs and calculations.  This is a work in progress, so check back frequently to see what is new!  We look very forward to all the functionalities that AquariuMac will have to offer. 
+    %br
+    .main
+      %h3= link_to @post.subject
+      .clearfix
+        %small
+          Published:
+          =h @post.published_at.strftime("%B %d, %Y at %I:%M%p EDT")
+        %br
+        %br
+        %p
+          =h @post.body
+        %br
+        %hr
+        - if logged_in?
+          %p{:style => "float:right;"}= link_to "Add Comment", new_post_comment_path(@post), :class => "button ui-corner-all dialog_link"
+        %p &nbsp;
+        .main
+          %h3{:class => "ui-state-active"}= link_to "Comments"
+          .clearfix{:id => "comments", :order => "created_at DESC"}
+            - for comment in @post.comments
+              %p= h comment.body
+              %p{:style => "margin-bottom:0px;"}
+                %small
+                  = h comment.email
+                  %br
+                  last updated:
+                  = h comment.updated_at.strftime("%B %d, %Y at %I:%M%p EDT")
+              - if current_user
+                - if current_user.id == comment.user_id or current_user.username == "admin"
+                  %p
+                    = link_to 'Edit', edit_post_comment_path(@post, comment),:style => "float:left;", :class => "dialog_link ui-icon ui-icon-pencil"
+                    / = link_to 'Remove', post_comment_path(@post, comment),:style => "float:left;", :class => "dialog_link ui-icon ui-icon-trash", :confirm => 'Are you sure?', :method => :delete
+              %hr{:style => "margin-top:0px;"}

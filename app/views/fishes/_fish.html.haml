@@ -1,0 +1,14 @@
+%tr{:id => "fish_#{fish.id}"}
+  / %td= h fish.user_id
+  / %td= h fish.aquarium_id
+  - if fish.image_file_name
+    %td
+      = link_to image_tag( fish.image.url(:thumb), :alt => "#{fish.scientific_name}", :class => "reflect"), fish_path(fish)
+  - else
+    %td= image_tag("nofish.png", :alt => "fish image", :class => "reflect avatar ui-corner-all")
+  %td= h fish.scientific_name
+  %td= h fish.common_name
+  %td= link_to 'More Info', fish_path(fish)
+  %td= link_to 'Edit', edit_fish_path(fish), :class => "dialog_link"
+  %td= link_to 'Remove', fish, :confirm => 'Are you sure?', :method => :delete
+

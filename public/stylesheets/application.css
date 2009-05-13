@@ -1,0 +1,226 @@
+body {
+	background: #DDDDDD url(http://s3.amazonaws.com/jackhq.cdn/images/bg.gif) repeat-x;
+	width: 960px;
+	color: #000000;
+	margin: 0px auto 0px;
+	padding: 0px;
+	
+	}
+
+a img {
+  border: none;
+}
+
+a {
+  color: #0000FF;
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+	
+#container {
+	background: whitesmoke;
+	width: 950px;
+	margin: 10px auto 10px;
+	padding: 0px 20px 20px 20px;
+	/* border: double #C0C0C0; */
+	}
+	
+label {
+	display : block;
+}
+
+.post-content-widget {
+	margin-top:20px;
+}
+
+.post-content-widget h3 {
+	margin:0px;
+	padding:10px;
+}
+
+.post-content-widget h3 a {
+	text-decoration:none;
+
+}
+
+
+.post-content-widget-details {
+	padding:10px;
+}
+#flash_notice, #flash_error {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+  display: inline;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 8px;
+}
+
+#errorExplanation ul {
+  margin: 2px 24px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: disc;
+}
+
+a.button, .button {
+  outline: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  vertical-align: middle; /* or top */
+  display: -moz-inline-box;
+  display: inline-block;
+  overflow: visible; /* IE6 form button fix */
+}
+
+a.button, .button {
+  color: #fff;
+  background-color: #2255AA;
+  padding: 5px 7px;
+}
+.button:hover {
+  background-color: #5186D7;
+}
+
+.avatar {
+	border : 5px solid lightgray;
+	margin:20px;
+	padding:5px;
+}
+
+.required { color: red; }
+
+.volback {
+  color: #fff;
+  background-color: #333333;
+  margin: 1px 1px 1px 1px;
+}
+
+
+.caplinkfont {
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+font-style: italic;
+color: #0000ff;
+font-size: 100%;
+text-align: left;}
+.linkfont {
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+font-style: italic;
+color: #0000ff;
+font-size: 100%;
+text-align: left;}
+.selectfont {
+font-family: Arial, Helvetica, sans-serif;
+color: #FFFFFF;
+background-color: #333333;
+font-weight: bold;
+font-size: 75%;
+text-align: center;}
+.fieldfont {
+font-family: Arial, Helvetica, sans-serif;
+font-weight: normal;
+font-size: 80%;
+background-color: #FFFFFF;
+text-align: center;}
+.fieldfont2 {
+font-family: Arial, Helvetica, sans-serif;
+font-weight: normal;
+font-size: 80%;
+background-color: #333333;
+border:0;
+text-align: center;}
+.fieldfont3 {
+font-family: Arial, Helvetica, sans-serif;
+color: #FFFFFF;
+font-weight: normal;
+font-size: 80%;
+background-color: #333333;
+text-align: center;}
+.textfont {
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+font-size: 90%;
+color: #4f4f4f;
+text-align: left;
+margin-left: 10px;}
+.titlefont {
+font-family: Arial, Helvetica, sans-serif;
+color: #000000;
+background-color: #E6E6E6;
+font-size: 90%;
+font-weight: Bold;
+border: 0;
+text-align: center;}
+.titlefont2 {
+font-family: Arial, Helvetica, sans-serif;
+color: #fff;
+background-color: #333333;
+font-size: 90%;
+font-weight: Bold;
+border: 0;}
+p.captionfont {
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+font-size: 80%;
+text-align: left;}
+.cellfont {
+font-family: Arial, Helvetica, sans-serif;
+font-size: 85%;
+font-weight: bold;
+text-align: center;}
+.cellfont2 {
+font-family: Arial, Helvetica, sans-serif;
+font-size: 65%;
+text-align: center;}
+.unitfont {
+font-family: Arial, Helvetica, sans-serif;
+color: #000000;
+background-color: #E6E6E6;
+font-size: 100%;
+font-weight: Bold;
+border: 0;}

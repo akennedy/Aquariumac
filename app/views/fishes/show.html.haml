@@ -1,0 +1,16 @@
+- title "Fish - #{@fish.scientific_name} - #{@fish.common_name}"
+.main
+  %h3{:class => "ui-state-active"}= link_to "#{@fish.scientific_name} - #{@fish.common_name}"
+  .clearfix
+    .span-10
+      %p
+        = link_to image_tag( @fish.image.url(:small), :alt => "#{@fish.scientific_name}", :class => "reflect ui-corner-all"), @fish.image.url
+    .span-12{:class => "last"}
+      %br
+      %p
+        %strong Scientific Name:
+        =h @fish.scientific_name
+      %p
+        %strong Common Name:
+        =h @fish.common_name
+

@@ -1,0 +1,35 @@
+- title "Blog - #{@post.subject}"
+.main
+  %h3= link_to @post.subject
+  .clearfix
+    %small
+      Published At:
+      =h @post.published_at
+    %br
+    %br
+    %p
+      =h @post.body
+    %br
+    %hr
+    %p{:style => "float:right;"}= link_to "Add Comment", new_post_comment_path(@post), :class => "button ui-corner-all dialog_link"
+    %p &nbsp;
+    .main
+      %h3{:class => "ui-state-active"}= link_to "Comments"
+      .clearfix{:id => "comments", :order => "created_at DESC"}
+        - for comment in @post.comments
+          %p= h comment.body
+          %p{:style => "margin-bottom:0px;"}
+            %small
+              = h comment.email
+              %br
+              last updated:
+              = h comment.updated_at
+              - if current_user
+                - if current_user.id == comment.user_id or current_user.username == "admin"
+                  %p
+                    = link_to 'Edit', edit_post_comment_path(@post, comment),:style => "float:left;", :class => "dialog_link ui-icon ui-icon-pencil"
+                    / = link_to 'Remove', post_comment_path(@post, comment),:style => "float:left;", :class => "dialog_link ui-icon ui-icon-trash", :confirm => 'Are you sure?', :method => :delete
+          %hr{:style => "margin-top:0px;"}
+            
+
+

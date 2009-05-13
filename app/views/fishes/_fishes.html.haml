@@ -1,0 +1,14 @@
+%p{:style => "float:right;"}= link_to "Add Fish", new_fish_path, :class => "button ui-corner-all dialog_link"
+%table
+  %thead
+    %tr
+      / %th User
+      / %th Aquarium
+      %th &nbsp;
+      %th Scientific name
+      %th Common name
+      %th &nbsp;
+      %th &nbsp;
+  %tbody{:id => "fishes" }
+    = render :partial => "fish", :collection => @fishes
+= will_paginate @fishes

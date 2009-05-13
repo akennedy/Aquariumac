@@ -1,0 +1,9 @@
+one:
+  subject: MyString
+  body: MyText
+  published_at: 2009-04-26 00:03:41
+
+two:
+  subject: MyString
+  body: MyText
+  published_at: 2009-04-26 00:03:41

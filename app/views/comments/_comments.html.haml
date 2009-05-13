@@ -1,0 +1,12 @@
+%table
+  %thead
+    %tr
+      %th Post
+      %th Email
+      %th Body
+      %th Approved
+  %tbody{:id => "comments" }
+    = render :partial => "comment", :collection => comments
+
+%p= link_to "New Comment", new_post_comment_path, :class => "button dialog_link"
+

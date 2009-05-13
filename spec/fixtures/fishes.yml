@@ -1,0 +1,11 @@
+one:
+  user_id: 1
+  aquarium_id: 1
+  scientific_name: MyString
+  common_name: MyString
+
+two:
+  user_id: 1
+  aquarium_id: 1
+  scientific_name: MyString
+  common_name: MyString

@@ -1,0 +1,6 @@
+%tr{:id => "aquarium_#{aquarium.id}"}
+  %td= h aquarium.name
+  %td= h aquarium.size
+  %td= link_to 'Edit', edit_user_aquarium_path(@user, aquarium), :class => "dialog_link"
+  %td= link_to 'Remove', user_aquarium_path(@user, aquarium), :confirm => 'Are you sure?', :method => :delete
+

@@ -1,0 +1,14 @@
+#aquarium_dialog
+  - form_for [@user, @aquarium] do |f|
+    = f.error_messages
+    %p
+      = f.hidden_field :user_id, :value => current_user.id
+    %p
+      = f.label :name
+      = f.text_field :name, :class => "text"
+    %p
+      = f.label :size, "Size (gallons)"
+      = f.text_field :size, :class => "text", :style => "width:100px;"
+    %p
+      = f.submit "#{f.object.new_record? ? "Create" : "Update"} Aquarium", :class => "button dialog ui-corner-all"
+      

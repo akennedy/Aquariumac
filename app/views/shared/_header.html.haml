@@ -1,0 +1,17 @@
+#header{:class => "span-24"}
+  #logo{:class => "span-4"}
+    %h1 
+      = link_to image_tag("aquariumac-head.jpg"), root_path
+      %span{:style => "position:absolute; top:40px;left:350px;font-size:.5em;color:#fff;"} Beta Edition
+    
+  %div{:class => "span-19.5", :style => "float:right;"}
+    %p &nbsp;
+    %ul
+      - if logged_in?
+        = link_to current_user.username, user_path(current_user), :class => "button ui-corner-all"
+        &nbsp;
+        = link_to "Log Out", logout_url, :class => "button ui-corner-all"
+      - else
+        = link_to "Register", new_user_path, :class => "button ui-corner-all"
+        &nbsp;
+        = link_to "Log In", new_session_path, :class => "button ui-corner-all"

@@ -1,0 +1,50 @@
+#fish_dialog
+  - form_for @fish, :html => { :multipart => true } do |f|
+    = f.error_messages
+    / %p
+    /   = f.label :user_id
+    /   = f.text_field :user_id, :class => "text"
+    / %p
+    /   = f.label :aquarium_id
+    /   = f.text_field :aquarium_id, :class => "text"
+    .span-8{:align => "center"}
+      %br      
+        - if @fish.image_file_name
+          = image_tag( @fish.image.url(:small), :class => "reflect")
+        - else
+          %br
+          %br
+          = image_tag("nofish.png", :alt => "fish image", :class => "reflect")
+    .span-2
+      %p
+    .span-12{:class => "last"}
+      .span-2
+        %p
+          = f.label :water_type, "Saltwater"
+          = f.radio_button :water_type, "Saltwater", :checked => true
+      .span-2{:class => "last"}
+        %p
+          = f.label :water_type, "Freshwater"
+          = f.radio_button :water_type, "Freshwater"
+      .span-10{:class => "last"} 
+        .span-5   
+          %p
+            = f.label :genus_name, "", :class => "required"
+            = f.text_field :genus_name, :class => "text", :style => "width:150px;"
+        .span-5{:class => "last"}
+          %p
+            = f.label :species_name, "", :class => "required"
+            = f.text_field :species_name, :class => "text", :style => "width:150px;"
+      .span-8{:class => "last"}
+        %p
+          = f.label :common_name
+          = f.text_field :common_name, :class => "text"
+        %p
+          - if params[:action] == "new"
+            = f.label :image, "Upload Image"
+          -else 
+            = f.label :image, "Upload New Image"
+          = f.file_field :image
+    %p
+      = f.submit "#{f.object.new_record? ? "Create" : "Update"} Fish", :class => "button dialog"
+      

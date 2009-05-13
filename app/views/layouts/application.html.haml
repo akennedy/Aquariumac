@@ -1,0 +1,26 @@
+!!! Strict
+%html{html_attrs('en-US')}
+  
+  %head
+    %title
+      = h(yield(:title) || "Untitled")
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+
+    = render :partial => "shared/stylesheets"
+    = render :partial => "shared/javascripts"
+    
+    = yield(:head)
+  
+  %body
+    #container{:class => "ui-corner-all"}
+      = render :partial => "shared/header"
+      #flash{:class => "span-24", :style => "margin-top:160px;position:absolute;z-index:1000;"}
+        - flash.each do |name, msg|
+          %h4= content_tag :div, msg, :id => "flash_#{name}"
+          = javascript_tag "setTimeout(\"$('#flash').hide('slow');\",3000)"
+      = render :partial => "shared/navigation"
+
+      #content.span-24
+        = yield
+      = render :partial => "shared/footer"
+      

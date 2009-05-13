@@ -1,0 +1,310 @@
+= javascript_include_tag "volume.js"
+- title "Aquarium Volume & Surface Area Calculator"
+%br
+%br
+.span-24{:style => "background-color:#bababa;", :class => "ui-corner-all"}
+  %br
+  .span-24{:style => "margin-left:20px;"}
+    .span-4{:align => "center"}
+      = image_tag("cylinder.png")
+    .span-4{:align => "center", :class => "last"}
+      = image_tag("convex.png")
+    .span-4{:align => "center", :class => "last"}
+      = image_tag("rectangle.png")
+    .span-4{:align => "center", :class => "last"}
+      = image_tag("l_shape.png")
+    .span-4{:align => "center", :class => "last"}
+      = image_tag("rounded.png")
+    .span-4{:align => "center", :class => "last"}
+      = image_tag("half_cylinder.png")
+    
+  .span-24{:style => "margin-left:20px;"}
+    .span-4{:align => "center"}
+      = image_tag("concave.png")
+    .span-4{:align => "center", :class => "last"}
+      = image_tag("pentagon.png")
+    .span-4{:align => "center", :class => "last"}
+      = image_tag("quarter_cylinder.png")
+    .span-4{:align => "center", :class => "last"}
+      = image_tag("flat_back_hex.png")
+    .span-4{:align => "center", :class => "last"}
+      = image_tag("hexagon.png")
+    .span-4{:align => "center", :class => "last"}
+      = image_tag("cube.png")
+    
+  <form action="post" method="post" name="VolForm" id="VolForm">    
+  .span-24{:class => "last"}
+    .span-17
+      .span-17{:class => "volback ui-corner-all"}
+        %p{:align => "center", :style => "margin:0px 0px 0px 0px;"}
+          %font{:style => "color:#e17474;"}
+            SYSTEM VOLUME
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          Length Units:&nbsp;&nbsp;
+          = select("DimUom", "", MAIN_AQUARIUM, { :selected => "i" }, {:class => "selectfont", :name => "DimUom", :tabindex => "1", :id => "dimuom", :onchange => "DoCalc(this.form)" } )
+      %p{:style => "margin:0px 0px 0px 0px"} &nbsp; 
+    
+    
+      .span-17{:class => "last volback ui-corner-all"}
+        %table{:style => "margin:0px 0px 0px 10px;"}
+          %tr
+            %td{:style => "text-align:left;color:#5186D7;", :width => "140px"}
+              MAIN AQUARIUM
+            %td{:style => "text-align:center;"}
+              %input{ :name => "tdim1", :type => "text", :id => "tdim1", :size => "10", :class => "titlefont2", :maxlength => "10", :readonly => "true"}
+            %td{:style => "text-align:center;"}
+              %input{ :name => "tdim2", :type => "text", :id => "tdim2", :size => "11", :class => "titlefont2", :maxlength => "11", :readonly => "true"}
+            %td{:style => "text-align:center;"}
+              %input{ :name => "tdim3", :type => "text", :id => "tdim3", :size => "11", :class => "titlefont2", :maxlength => "11", :readonly => "true"}
+            %td{:style => "text-align:center;"}
+              %input{ :name => "tdim4", :type => "text", :id => "tdim4", :size => "11", :class => "titlefont2", :maxlength => "11", :readonly => "true"}
+            %td
+              %input{ :name => "tdim5", :type => "text", :id => "tdim5", :size => "11", :class => "titlefont2", :maxlength => "11", :readonly => "true"}
+          %tr
+            %td{:align => "center", :width => "140px"}
+              = select("TankShape", "", MAIN_AQUARIUM_SHAPE, {:prompt => "Select Aquarium Shape" }, {:class => "selectfont", :name => "TankShape", :tabindex => "2", :id => "tankshape", :onchange => "DoCalc(this.form)" } )
+            %td
+              %input{:name => "tmes1", :type => "text", :id => "tmes1", :class => "fieldfont", :size => "7", :tabindex => "3", :maxlength => "5"}
+            %td
+              %input{:name => "tmes2", :type => "text", :id => "tmes2", :class => "fieldfont", :size => "7", :tabindex => "4", :maxlength => "5"}
+            %td
+              %input{:name => "tmes3", :type => "text", :id => "tmes3", :class => "fieldfont", :size => "7", :tabindex => "5", :maxlength => "5"}
+            %td
+              %input{:name => "tmes4", :type => "text", :id => "tmes4", :class => "fieldfont", :size => "7", :tabindex => "6", :maxlength => "5"}
+            %td
+              %input{:name => "tmes5", :type => "text", :id => "tmes5", :class => "fieldfont", :size => "7", :tabindex => "7", :maxlength => "5"}
+      %p{:style => "margin:0px 0px 0px 0px"} &nbsp; 
+    
+    
+      .span-17{:class => "last volback ui-corner-all"}
+        %table{:style => "margin:0px 0px 0px 10px;"}
+          %tr
+            %td{:style => "text-align:left;color:#7efea5;", :width => "140px"}
+              SUMP 
+            %td{:style => "text-align:center;"}
+              %input{:name => "sdim1", :type => "text", :id => "sdim1", :size => "10", :class => "titlefont2", :maxlength => "10", :readonly => "true"}
+            %td{:style => "text-align:center;"}
+              %input{:name => "sdim2", :type => "text", :id => "sdim2", :size => "11", :class => "titlefont2", :maxlength => "11", :readonly => "true"}
+            %td
+              %input{:name => "sdim3", :type => "text", :id => "sdim3", :size => "11", :class => "titlefont2", :maxlength => "11", :readonly => "true"}
+            %td
+              %input{:name => "blank", :type => "text", :class => "titlefont2", :id => "blank", :size => "11", :maxlength => "11", :readonly => "true"}
+            %td
+              %input{:name => "blank", :type => "text", :class => "titlefont2", :id => "blank", :size => "11", :maxlength => "11", :readonly => "true"}  
+          %tr
+            %td{:align => "center", :width => "140px"}
+              = select("SumpShape", "", SUMP_SHAPE, {:prompt => "Select Sump Shape" }, {:class => "selectfont", :name => "SumpShape", :tabindex => "8", :id => "sumpshape", :onchange => "DoCalc(this.form)" } )
+            %td
+              %input{:name => "smes1", :type => "text", :id => "smes1", :class => "fieldfont", :size => "7", :tabindex => "9", :maxlength => "5"}
+            %td
+              %input{:name => "smes2", :type => "text", :id => "smes2", :class => "fieldfont", :size => "7", :tabindex => "10", :maxlength => "5"}
+            %td
+              %input{:name => "smes3", :type => "text", :id => "smes3", :class => "fieldfont", :size => "7", :tabindex => "11", :maxlength => "5"}
+            %td
+              %input{:name => "blank", :type => "text", :class => "fieldfont2", :id => "blank", :size => "7", :maxlength => "25", :readonly => "true"}
+            %td
+              %input{:name => "blank", :type => "text", :class => "fieldfont2", :id => "blank", :size => "7", :maxlength => "25", :readonly => "true"}          
+      %p{:style => "margin:0px 0px 0px 0px"} &nbsp;
+    
+    
+      .span-17{:class => "last volback ui-corner-all"}
+        %table{:style => "margin:0px 0px 0px 10px;"}
+          %tr
+            %td{:style => "text-align:left;color:#dbae5e;", :width => "140px"}
+              REFUGIUM            
+            %td{:style => "text-align:center;"}
+              %input{:name => "rdim1", :type => "text", :id => "rdim1", :size => "10", :class => "titlefont2", :maxlength => "10", :readonly => "true"}
+            %td{:style => "text-align:center;"}
+              %input{:name => "rdim2", :type => "text", :id => "rdim2", :size => "11", :class => "titlefont2", :maxlength => "11", :readonly => "true"}
+            %td
+              %input{:name => "rdim3", :type => "text", :id => "rdim3", :size => "11", :class => "titlefont2", :maxlength => "11", :readonly => "true"}
+            %td
+              %input{:name => "blank", :type => "text", :class => "titlefont2", :id => "blank", :size => "11", :maxlength => "11", :readonly => "true"}
+            %td
+              %input{:name => "blank", :type => "text", :class => "titlefont2", :id => "blank", :size => "11", :maxlength => "11", :readonly => "true"}
+          %tr
+            %td{:align => "center", :width => "140px"}
+              = select("FugeShape", "", FUGE_SHAPE, {:prompt => "Select Rufuge Shape" }, {:class => "selectfont", :name => "FugeShape", :tabindex => "12", :id => "fugeshape", :onchange => "DoCalc(this.form)" } ) 
+            %td
+              %input{:name => "rmes1", :type => "text", :id => "rmes1", :class => "fieldfont", :size => "7", :tabindex => "13", :maxlength => "5"}
+            %td
+              %input{:name => "rmes2", :type => "text", :id => "rmes2", :class => "fieldfont", :size => "7", :tabindex => "14", :maxlength => "5"}
+            %td
+              %input{:name => "rmes3", :type => "text", :id => "rmes3", :class => "fieldfont", :size => "7", :tabindex => "15", :maxlength => "5"}
+            %td
+              %input{:name => "blank", :type => "text", :class => "fieldfont2", :id => "blank", :size => "7", :maxlength => "25", :readonly => "true"}
+            %td
+              %input{:name => "blank", :type => "text", :class => "fieldfont2", :id => "blank", :size => "7", :maxlength => "25", :readonly => "true"}
+      %p{:style => "margin:0px 0px 0px 0px"} &nbsp;
+    
+    
+      .span-17{:class => "last volback ui-corner-all"}
+        %table{:style => "margin:0px 0px 0px 10px;"}
+          %tr
+            %td{:style => "text-align:left;color:#e6aded;", :width => "140px"}
+              PROPOGATION          
+            %td{:style => "text-align:center;"}
+              %input{:name => "pdim1", :type => "text", :id => "pdim1", :size => "10", :class => "titlefont2", :maxlength => "10", :readonly => "true"}
+            %td{:style => "text-align:center;"}
+              %input{:name => "pdim2", :type => "text", :id => "pdim2", :size => "11", :class => "titlefont2", :maxlength => "11", :readonly => "true"}
+            %td
+              %input{:name => "pdim3", :type => "text", :id => "pdim3", :size => "11", :class => "titlefont2", :maxlength => "11", :readonly => "true"}
+            %td
+              %input{:name => "blank", :type => "text", :class => "titlefont2", :id => "blank", :size => "11", :maxlength => "11", :readonly => "true"}
+            %td
+              %input{:name => "blank", :type => "text", :class => "titlefont2", :id => "blank", :size => "11", :maxlength => "11", :readonly => "true"}
+          %tr
+            %td{:align => "center", :width => "140px"}
+              = select("PropShape", "", PROP_SHAPE, {:prompt => "Select Prop Shape" }, {:class => "selectfont", :name => "PropShape", :tabindex => "16", :id => "propshape", :onchange => "DoCalc(this.form)" } ) 
+            %td
+              %input{:name => "pmes1", :type => "text", :id => "pmes1", :class => "fieldfont", :size => "7", :tabindex => "17", :maxlength => "5"}
+            %td
+              %input{:name => "pmes2", :type => "text", :id => "pmes2", :class => "fieldfont", :size => "7", :tabindex => "18", :maxlength => "5"}
+            %td
+              %input{:name => "pmes3", :type => "text", :id => "pmes3", :class => "fieldfont", :size => "7", :tabindex => "19", :maxlength => "5"} 
+            %td
+              %input{:name => "blank", :type => "text", :class => "fieldfont2", :id => "blank", :size => "7", :maxlength => "25", :readonly => "true"}
+            %td
+              %input{:name => "blank", :type => "text", :class => "fieldfont2", :id => "blank", :size => "7", :maxlength => "25", :readonly => "true"}
+      %p{:style => "margin:0px 0px 0px 0px"} &nbsp;
+    
+              
+      .span-17{:class => "volback ui-corner-all"}
+        %p{:align => "center", :style => "margin:0px 0px 0px 0px;"}
+          %font{:style => "color:#f5f980;"}
+            OTHER 
+          container, equipment or piping volume:&nbsp;&nbsp;&nbsp;
+          %input{:name => "othvol", :type => "text", :id => "othvol", :class => "fieldfont", :tabindex => "20", :size => "7", :maxlength => "5"}
+          &nbsp;&nbsp;&nbsp;        
+          = select("OthvolUom", "", RESULT_UNIT, {:selected => "ga" }, {:class => "selectfont", :name => "OthvolUom", :tabindex => "21", :id => "othvoluom", :onchange => "DoCalc(this.form)" } )
+      %p{:style => "margin:0px 0px 0px 0px"} &nbsp;
+    
+    
+      .span-17{:class => "last volback ui-corner-all"}
+        %table{:style => "margin:0px 0px 0px 10px;text-align:center;"}
+          %tr
+            %td{:align => "center"}
+              %p{:align => "center", :style => "margin:0px 0px 0px 0px;"}
+                %font{:style => "color:#74e1dd;"}
+                  LIVE 
+                Rock and Dry Sand weight in:&nbsp;&nbsp;&nbsp;&nbsp;
+                = select("WeightUom", "", WEIGHT, {:selected => "p" }, {:class => "selectfont", :name => "WeightUom", :tabindex => "22", :id => "weightuom", :onchange => "DoCalc(this.form)" } )
+                %font{:class => "cellfont2"}
+                  &nbsp;&nbsp;&nbsp;&nbsp;( assumes 50% porosity in rock and sand )
+        %div{:style => "margin-left:60px;"}
+          %table
+            %tr
+              %td
+                %font{:class => "cellfont"}
+                  Rock Weight in Main Aquarium:&nbsp;&nbsp;
+                %input{:name => "aragwt1", :type => "text", :id => "aragwt1", :class => "fieldfont", :tabindex => "23", :size => "7", :maxlength => "5"}
+              %td
+                %font{:class => "cellfont"}
+                  Rock Weight in Fuge or Other:&nbsp;&nbsp;
+                %input{:name => "aragwt2", :type => "text", :id => "aragwt2", :class => "fieldfont", :tabindex => "24", :size => "7", :maxlength => "5"}
+            %tr{:align => "center"}
+              %td
+                %font{:class => "cellfont"}
+                  Sand Weight in Main Aquarium:&nbsp;&nbsp;
+                %input{:name => "aragwt3", :type => "text", :id => "aragwt3", :class => "fieldfont", :tabindex => "25", :size => "7", :maxlength => "5"}
+              %td
+                %font{:class => "cellfont"}
+                  Sand Weight in Fuge or Other:&nbsp;&nbsp;
+                %input{:name => "aragwt4", :type => "text", :id => "aragwt4", :class => "fieldfont", :tabindex => "26", :size => "7", :maxlength => "5"}                              
+                            
+                            
+    .span-7{:class => "last"}
+      %div{:colspan => "2", :rowspan => "9", :align => "center", :class => " volback ui-corner-all"}
+        %br
+        %input{:name => "Button", :type => "button", :tabindex => "28", :onClick => "DoCalc(this.form)", :value => "Calculate"}
+        %br
+        %hr{:style => "margin:10px 0px 10px 0px;width:250px;"}
+        %div{:align => "right"}
+          %div{:align => "center"}
+            %font{:color => "#000000", :class => "titlefont2"}
+              VOLUME RESULTS IN:&nbsp;
+            = select("ResultUom", "", RESULT_UNIT, {:selected => "ga" }, {:class => "selectfont", :name => "ResultUom", :tabindex => "27", :id => "resultuom", :onchange => "DoCalc(this.form)" } )
+            %hr{:style => "margin:10px 0px 10px 0px;width:250px;"}
+            %table{:style => "margin:0px 0px 0px 10px;"}
+              %tr
+                %td
+                  &nbsp;
+                %td
+                  %br
+                  Volume
+                %td
+                  Surface
+                  %br
+                  Area
+                  %input{:name => "wtuoma", :type => "text", :class => "titlefont2", :id => "wtuoma", :size => "4", :maxlength => "20", :readonly => "true"}
+              %tr
+                %td{:style => "color:#5186D7;"}
+                  Main Aquarium
+                %td
+                  %input{:name => "resulttank", :type => "text", :class => "fieldfont3", :id => "resulttank", :size => "10", :maxlength => "25", :readonly => "true"}
+                %td
+                  %input{:name => "resulttanka", :type => "text", :class => "fieldfont3", :id => "resulttanka", :size => "10", :maxlength => "25", :readonly => "true"}  
+              %tr
+                %td{:style => "color:#7efea5;"}
+                  Sump
+                %td
+                  %input{:name => "resultsump", :type => "text", :class => "fieldfont3", :id => "resultsump", :size => "10", :maxlength => "25", :readonly => "true"}
+                %td
+                  %input{:name => "resultsumpa", :type => "text", :class => "fieldfont3", :id => "resultsumpa", :size => "10", :maxlength => "25", :readonly => "true"}
+              %tr
+                %td{:style => "color:#dbae5e;"}
+                  Refugium
+                %td
+                  %input{:name => "resultfuge", :type => "text", :class => "fieldfont3", :id => "resultfuge", :size => "10", :maxlength => "25", :readonly => "true"}
+                %td
+                  %input{:name => "resultfugea", :type => "text", :class => "fieldfont3", :id => "resultfugea", :size => "10", :maxlength => "25", :readonly => "true"}
+              %tr
+                %td{:style => "color:#e6aded;"}
+                  Prop Tank
+                %td
+                  %input{:name => "resultprop", :type => "text", :class => "fieldfont3", :id => "resultprop", :size => "10", :maxlength => "25", :readonly => "true"}
+                %td
+                  %input{:name => "resultpropa", :type => "text", :class => "fieldfont3", :id => "resultpropa", :size => "10", :maxlength => "25", :readonly => "true"}
+              %tr
+                %td{:style => "color:#f5f980;"}
+                  Other Volume
+                %td
+                  %input{:name => "resultoth", :type => "text", :class => "fieldfont3", :id => "resultoth", :size => "10", :maxlength => "25", :readonly => "true"}
+                %td
+                  %input{:name => "blank", :type => "text", :class => "fieldfont2", :id => "blank", :size => "10", :maxlength => "25", :readonly => "true"}
+              %tr
+                %td{:style => "color:#e17474;"}
+                  Total
+                %td
+                  %input{:name => "resulttotal", :type => "text", :class => "fieldfont3", :id => "resulttotal", :size => "10", :maxlength => "25", :readonly => "true"}
+                %td
+                  %input{:name => "resulttotala", :type => "text", :class => "fieldfont3", :id => "resulttotala", :size => "10", :maxlength => "25", :readonly => "true"}
+              %tr
+                %td{:style => "color:#74e1dd"}
+                  LR&S Volume
+                %td
+                  %input{:name => "resultarag", :type => "text", :class => "fieldfont3", :id => "resultarag", :size => "10", :maxlength => "25", :readonly => "true"}
+                %td
+                  %input{:name => "blank1", :type => "text", :class => "fieldfont2", :id => "blank1", :size => "10", :maxlength => "25", :readonly => "true"}
+              %tr
+                %td
+                  &nbsp;
+              %tr
+                %td{:style => "color:#e17474;"}
+                  Net System Vol
+                %td
+                  %input{:name => "resultnetvol", :type => "text", :class => "fieldfont3", :id => "resultnetvol", :size => "10", :maxlength => "25", :readonly => "true"}
+                %td
+                  %input{:name => "blank2", :type => "text", :class => "fieldfont2", :id => "blank2", :size => "10", :maxlength => "25", :readonly => "true"}
+          %center
+            %hr{:style => "margin:10px 0px 10px 0px;width:250px;"}
+            %font{:class => "titlefont2", :style => "color:#74e1dd"}
+              Main Aquarium Content Weight
+              %br
+              %input{:name => "resultweight", :type => "text", :class => "fieldfont3", :id => "resultweight", :size => "10", :maxlength => "25", :readonly => "true"}      
+              %input{:name => "wtuom", :type => "text", :class => "titlefont2", :id => "wtuom", :size => "7", :maxlength => "50", :readonly => "true"}  
+            %br
+            %br
+            %br
+            %br
+</form>

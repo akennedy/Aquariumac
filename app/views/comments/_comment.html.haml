@@ -1,0 +1,13 @@
+%div{:id => "comment_#{comment.id}"}
+  %p= h comment.body
+  %p
+    %small
+      = h comment.email
+      %br
+      = h comment.created_at
+  - if logged_in? and current_user.email == comment.email
+    %p
+      = link_to 'Edit', edit_post_comment_path(@post, comment), :class => "dialog_link"
+      |
+      = link_to 'Remove', post_comment_path(@post, comment), :confirm => 'Are you sure?', :method => :delete
+  %hr

@@ -1,0 +1,18 @@
+#comment_dialog
+  - form_for [@user, @post, @comment] do |f|
+    = f.error_messages
+    %p
+      = f.hidden_field :user_id, :value => current_user.id
+    %p
+      = f.hidden_field :post_id
+    %p
+      = f.label :email
+      = f.text_field :email, :class => "text"
+    %p
+      = f.label :body
+      = f.text_area :body, :class => "text"
+    %p
+      = f.hidden_field :approved
+    %p
+      = f.submit "#{f.object.new_record? ? "Create" : "Update"} Comment", :class => "button dialog"
+      

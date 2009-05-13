@@ -1,0 +1,2 @@
+result = render :partial => "post", :object => @post
+page << "$('#posts').prepend('#{ escape_javascript result }')"

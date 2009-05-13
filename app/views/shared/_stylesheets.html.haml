@@ -1,0 +1,8 @@
+= stylesheet_link_tag 'screen.css', :media => "screen, projection"
+= stylesheet_link_tag 'print.css', :media => "print"
+
+/[if IE] <link rel="stylesheet" href="/stylesheets/ie.css" type="text/css" media="screen, projection" />
+/[if lte IE 7] <style type="text/css"> html .ddsmoothmenu{height: 1%;} /*Holly Hack for IE7 and below*/ </style>
+= stylesheet_link_tag 'jquery-ui.css'
+= stylesheet_link_tag 'ddsmoothmenu.css'
+= stylesheet_link_tag 'application.css'

@@ -1,0 +1,10 @@
+%table
+  %thead
+    %tr
+      %th Name
+      %th Size
+  %tbody{:id => "aquaria" }
+    = render :partial => "aquaria/aquarium", :collection => aquaria
+
+%p= link_to "New Aquarium", new_user_aquarium_path(@user), :class => "button ui-corner-all dialog_link"
+

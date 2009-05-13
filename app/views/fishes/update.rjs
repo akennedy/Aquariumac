@@ -1,0 +1,2 @@
+result = render :partial => "fish", :object => @fish
+page << "$('#fish_#{@fish.id}').replaceWith('#{ escape_javascript result }')"

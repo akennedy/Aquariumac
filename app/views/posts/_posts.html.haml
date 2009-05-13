@@ -1,0 +1,9 @@
+%p{:style => "float:right;"}= link_to "New Post", new_post_path, :class => "button ui-corner-all dialog_link"
+%table
+  %thead
+    %tr
+      %th Subject
+      %th Body
+      %th Published at
+  %tbody{:id => "posts"}
+    = render :partial => "post", :collection => posts

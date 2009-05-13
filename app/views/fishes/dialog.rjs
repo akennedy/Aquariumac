@@ -1,0 +1,53 @@
+result = render :partial => "form"
+page << <<-JS
+
+var idialog = '#fish_dialog';
+var iform = idialog + ' > form';
+var ierror = '#error_dialog';
+
+
+
+$('#container').append('#{ escape_javascript result}');
+
+var options = {
+	dataType: 'script', 
+	success: function() { 
+	  if ($(ierror).html() == null)
+	  {
+	    $(idialog).dialog("close");
+	    $(idialog).remove();
+	  }  
+	}
+};
+
+
+$(iform).ajaxForm(options);
+
+$(idialog).dialog({
+	autoOpen: true,
+	width: 940,
+	title: '#{params[:action].capitalize} #{@fish.scientific_name}',
+	closeOnEscape: true,
+	buttons: {
+		"Ok": function() {
+			  $(iform).submit();
+			}, 
+		"Cancel": function() {
+			$(this).dialog("close");
+			} 
+		},
+	close: function() {
+		$(this).remove(); 
+	  
+	}
+		
+});
+
+jQuery(function($) {
+	$("img.reflect").reflect({height:0.3,opacity:0.3});
+});
+
+
+$('.button.dialog').hide();
+
+JS
