@@ -1,4 +1,4 @@
-class AddAttachmentsImageToFishy < ActiveRecord::Migration
+class AddAttachmentsImageToFish < ActiveRecord::Migration
   def self.up
     add_column :fishes, :image_file_name, :string
     add_column :fishes, :image_content_type, :string
