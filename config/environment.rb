@@ -11,7 +11,7 @@ Rails::Initializer.run do |config|
   config.gem 'cucumber', :lib => false, :version => '>=0.3'
   config.gem 'webrat', :lib => false, :version => '>=0.4.3'
   config.gem 'rspec-rails', :lib => false, :version => '>=1.2.2'
-  config.gem 'rspec', :lib => false, :version => '>=1.2.2'
+  config.gem 'rspec', :lib => false, :version => '>=1.2.4'
   config.gem 'haml'
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
