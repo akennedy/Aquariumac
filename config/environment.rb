@@ -10,7 +10,7 @@ Rails::Initializer.run do |config|
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
   config.gem 'cucumber', :lib => false, :version => '>=0.3'
   config.gem 'webrat', :lib => false, :version => '>=0.4.3'
-  config.gem 'rspec-rails', :lib => false, :version => '>=1.2.2'
+  config.gem 'rspec-rails', :lib => false, :version => '>=1.2.6'
   config.gem 'rspec', :lib => false, :version => '>=1.2.6'
   config.gem 'haml'
   # Settings in config/environments/* take precedence over those specified here.
