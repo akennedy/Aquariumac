@@ -2,5 +2,5 @@ thoughtbot-factory_girl --source http://gems.github.com
 cucumber --version 0.3
 webrat --version 0.4.3
 rspec-rails --version 1.2.2
-rspec --version 1.2.2
+rspec --version 1.2.4
 haml
