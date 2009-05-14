@@ -1,4 +1,6 @@
 class AquariaController < ApplicationController
+  before_filter :login_required
+  
   before_filter :load_parent
   
   def index
