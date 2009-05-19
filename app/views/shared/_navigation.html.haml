@@ -1,30 +1,30 @@
-- if logged_in?
-  #navigation{ :class => "span-24 ui-corner-all ddsmoothmenu" }
-    %ul
-      %li= link_to "HOME", root_path, :class => "ui-corner-left"
+#navigation{ :class => "span-24 ui-corner-all ddsmoothmenu" }
+  %ul
+    %li= link_to "HOME", root_path, :class => "ui-corner-left"
+    - if logged_in?
       - if current_user.username == "admin"
         %li= link_to "POSTS", posts_path 
-      %li= link_to "BLOG", "#"
-      %li
-        = link_to "AQUARIA", "#"
-        %ul
-          %li
-            = link_to "My Aquaria", "#", :class => "ui-corner-all"
-            %ul
-              %li= link_to "all", user_aquaria_path(current_user), :class => "ui-corner-all"
-              %li= link_to "list them here", "", :class => "ui-corner-all"         
-          %li= link_to "Add New Aquarium", new_user_aquarium_path(current_user), :class => "button ui-corner-all dialog_link"
+    %li= link_to "BLOG", "#"
+    %li
+      = link_to "AQUARIA", "#"
+      %ul
         %li
-          = link_to "FISH", fishes_path
+          = link_to "My Aquaria", "#", :class => "ui-corner-all"
+          %ul
+            %li= link_to "all", user_aquaria_path(current_user), :class => "ui-corner-all"
+            %li= link_to "list them here", "", :class => "ui-corner-all"         
+        %li= link_to "Add New Aquarium", new_user_aquarium_path(current_user), :class => "button ui-corner-all dialog_link"
+      %li
+        = link_to "FISH", fishes_path
+        %ul
+          %li 
+            = link_to "Fish Database", fishes_path, :class => "ui-corner-all"
+            %ul
+              %li= link_to "Saltwater Fish", fishes_path, :class => "ui-corner-all"
+              %li= link_to "Freshwater Fish", fishes_path(:view => 'Freshwater'), :class => "ui-corner-all"         
+          %li= link_to "Add New Fish", new_fish_path, :class => "button ui-corner-all dialog_link"
+        %li
+          = link_to "CALCULATORS", :controller => 'calculators', :action => 'volume'
           %ul
             %li 
-              = link_to "Fish Database", fishes_path, :class => "ui-corner-all"
-              %ul
-                %li= link_to "Saltwater Fish", fishes_path, :class => "ui-corner-all"
-                %li= link_to "Freshwater Fish", fishes_path(:view => 'Freshwater'), :class => "ui-corner-all"         
-            %li= link_to "Add New Fish", new_fish_path, :class => "button ui-corner-all dialog_link"
-          %li
-            = link_to "CALCULATORS", :controller => 'calculators', :action => 'volume'
-            %ul
-              %li 
-                = link_to "Volume & Surface Area", {:controller => 'calculators', :action => 'volume'}, :class => "ui-corner-all"
+              = link_to "Volume & Surface Area", {:controller => 'calculators', :action => 'volume'}, :class => "ui-corner-all"
