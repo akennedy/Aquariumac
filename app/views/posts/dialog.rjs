@@ -46,4 +46,6 @@ $(idialog).dialog({
 
 $('.button.dialog').hide();
 
+setTimeout( function (){ $('textarea').wysiwyg(); }, 500);
+
 JS
