@@ -1,6 +1,6 @@
 %tr{:id => "post_#{post.id}"}
   %td= link_to post.subject, post_path(post)
-  %td= h post.body
+  %td= post.body
   %td= h post.published_at
   %td= link_to 'Edit', edit_post_path(post), :class => "dialog_link"
   %td= link_to 'Remove', post, :confirm => 'Are you sure?', :method => :delete
